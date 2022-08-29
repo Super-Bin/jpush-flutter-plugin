@@ -62,8 +62,8 @@ class _MyAppState extends State<MyApp> {
 
     jpush.setAuth(enable: true);
     jpush.setup(
-      // appKey: "xxxxx", //你自己应用的 AppKey
-      appKey: "com.jiguang.jpushexample", //你自己应用的 AppKey
+      appKey: "xxxxx", //你自己应用的 AppKey
+      // appKey: "com.jiguang.jpushexample", //你自己应用的 AppKey
       channel: "theChannel",
       production: false,
       debug: true,
