@@ -36,9 +36,9 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
 
-//        applicationId "com.jiguang.jpushexample"
+        applicationId "com.jiguang.jpushexample"
 
-        applicationId "com.shikk.testJpush" //JPush 上注册的包名.
+//        applicationId "com.shikk.testJpush" //JPush 上注册的包名.
 
         minSdkVersion 21
         targetSdkVersion 30
@@ -56,7 +56,8 @@ android {
 
         manifestPlaceholders = [
                 JPUSH_PKGNAME : applicationId,
-                JPUSH_APPKEY : "31c7c1b2cf59c1d42895a782", //JPush 上注册的包名对应的 Appkey.
+//                JPUSH_APPKEY : "31c7c1b2cf59c1d42895a782", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_APPKEY : "41799d8ebdef2b774fd46a9d", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }

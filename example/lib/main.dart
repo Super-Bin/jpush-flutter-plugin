@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String? debugLable = 'Unknown';
+  String? rid = '';
   final JPush jpush = new JPush();
 
   @override
@@ -61,7 +62,8 @@ class _MyAppState extends State<MyApp> {
 
     jpush.setAuth(enable: true);
     jpush.setup(
-      appKey: "xxxxx", //你自己应用的 AppKey
+      // appKey: "xxxxx", //你自己应用的 AppKey
+      appKey: "com.jiguang.jpushexample", //你自己应用的 AppKey
       channel: "theChannel",
       production: false,
       debug: true,
@@ -72,6 +74,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     jpush.getRegistrationID().then((rid) {
       print("flutter get registration id : $rid");
+      this.rid = rid;
       setState(() {
         debugLable = "flutter getRegistrationID: $rid";
       });
@@ -97,12 +100,19 @@ class _MyAppState extends State<MyApp> {
         ),
         body: new Center(
             child: new Column(children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                // color: Colors.brown,
+                child: Text(this.rid ?? ""),
+                width: 350,
+                height: 50,
+              ),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            // margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
             color: Colors.brown,
             child: Text(debugLable ?? "Unknown"),
             width: 350,
-            height: 100,
+            height: 150,
           ),
           new Row(
               mainAxisAlignment: MainAxisAlignment.center,
