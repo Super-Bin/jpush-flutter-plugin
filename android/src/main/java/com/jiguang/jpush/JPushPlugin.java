@@ -36,7 +36,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
 
 
-    private static String TAG = "| JPUSH | Flutter | Android | ";
+    private static String TAG = "| JPUSH | Flutter | Android |";
 
     public static JPushPlugin instance;
 
