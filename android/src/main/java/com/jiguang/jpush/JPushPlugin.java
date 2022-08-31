@@ -129,7 +129,8 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         }
     }
 
-    private void setAuth(MethodCall call, Result result){
+    // 同意隐私政策
+    private void setAuth(MethodCall call, Result result) {
         HashMap<String, Object> map = call.arguments();
         if (map == null) {
             return;
@@ -138,13 +139,15 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         if (enable == null) {
             enable = false;
         }
-        JCollectionAuth.setAuth(context,enable);
+        JCollectionAuth.setAuth(context, enable);
     }
-    private void testCountryCode(MethodCall call, Result result){
+
+    private void testCountryCode(MethodCall call, Result result) {
         String code = call.arguments();
-        Log.d(TAG,"testCountryCode code="+code);
+        Log.d(TAG, "testCountryCode code=" + code);
         JCoreInterface.testCountryCode(code);
     }
+
     private void setWakeEnable(MethodCall call, Result result) {
         HashMap<String, Object> map = call.arguments();
         if (map == null) {
@@ -154,7 +157,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         if (enable == null) {
             enable = false;
         }
-        JCoreInterface.setWakeEnable(context,enable);
+        JCoreInterface.setWakeEnable(context, enable);
     }
 
     // 主线程再返回数据
@@ -165,10 +168,10 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
             @Override
             public void run() {
                 if (result == null && method != null) {
-                    if( null != channel){
-                        channel.invokeMethod(method,map);
-                    }else {
-                        Log.d(TAG,"channel is null do nothing");
+                    if (null != channel) {
+                        channel.invokeMethod(method, map);
+                    } else {
+                        Log.d(TAG, "channel is null do nothing");
                     }
                 } else {
                     result.success(map);
@@ -182,9 +185,12 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
 
         HashMap<String, Object> map = call.arguments();
         boolean debug = (boolean) map.get("debug");
+        // 设置debug模式
         JPushInterface.setDebugMode(debug);
 
+        // 初始化sdk
         JPushInterface.init(context);            // 初始化 JPush
+
         JPushInterface.setNotificationCallBackEnable(context, true);
         String channel = (String) map.get("channel");
         JPushInterface.setChannel(context, channel);
@@ -197,7 +203,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
 
     public void scheduleCache() {
         Log.d(TAG, "scheduleCache:");
-        if(JPushPlugin.instance==null||JPushPlugin.instance.channel==null){
+        if (JPushPlugin.instance == null || JPushPlugin.instance.channel == null) {
             return;
         }
         List<Object> tempList = new ArrayList<Object>();
@@ -277,6 +283,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         callbackMap.put(sequence, result);
         JPushInterface.getAllTags(context, sequence);
     }
+
     public void getAlias(MethodCall call, Result result) {
         Log.d(TAG, "getAlias： ");
 
@@ -486,7 +493,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
     static void transmitMessageReceive(String message, Map<String, Object> extras) {
         Log.d(TAG, "transmitMessageReceive " + "message=" + message + "extras=" + extras);
 
-        if (instance == null||instance.channel==null) {
+        if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
         }
@@ -506,7 +513,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         notification.put("extras", extras);
         JPushPlugin.openNotificationCache.add(notification);
 
-        if (instance == null||instance.channel==null) {
+        if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
         }
@@ -519,13 +526,13 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
 
     }
 
-    public static void onNotifyMessageUnShow( NotificationMessage notificationMessage) {
-        Log.e(TAG,"[onNotifyMessageUnShow] message:"+notificationMessage);
-        if (instance == null||instance.channel==null) {
+    public static void onNotifyMessageUnShow(NotificationMessage notificationMessage) {
+        Log.e(TAG, "[onNotifyMessageUnShow] message:" + notificationMessage);
+        if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
         }
-        Map<String, Object> notification= new HashMap<>();
+        Map<String, Object> notification = new HashMap<>();
         notification.put("title", notificationMessage.notificationTitle);
         notification.put("alert", notificationMessage.notificationContent);
         notification.put("extras", getExtras(notificationMessage));
@@ -533,8 +540,8 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
 
-    private static Map<String,Object> getExtras(NotificationMessage notificationMessage){
-        Map<String, Object> extras= new HashMap<>();
+    private static Map<String, Object> getExtras(NotificationMessage notificationMessage) {
+        Map<String, Object> extras = new HashMap<>();
         try {
             extras.put(JPushInterface.EXTRA_MSG_ID, notificationMessage.msgId);
             extras.put(JPushInterface.EXTRA_NOTIFICATION_ID, notificationMessage.notificationId);
@@ -561,15 +568,16 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
             if (!TextUtils.isEmpty(notificationMessage.notificationLargeIcon)) {
                 extras.put(JPushInterface.EXTRA_NOTIFICATION_LARGET_ICON, notificationMessage.notificationLargeIcon);
             }
-        }catch (Throwable e){
-            Log.e(TAG,"[onNotifyMessageUnShow] e:"+e.getMessage());
+        } catch (Throwable e) {
+            Log.e(TAG, "[onNotifyMessageUnShow] e:" + e.getMessage());
         }
         return extras;
     }
+
     static void transmitNotificationReceive(String title, String alert, Map<String, Object> extras) {
         Log.d(TAG, "transmitNotificationReceive " + "title=" + title + "alert=" + alert + "extras=" + extras);
 
-        if (instance == null||instance.channel==null) {
+        if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
         }
