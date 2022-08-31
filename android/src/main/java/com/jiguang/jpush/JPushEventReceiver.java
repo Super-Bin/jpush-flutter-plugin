@@ -33,6 +33,12 @@ public class JPushEventReceiver extends JPushMessageReceiver {
         });
     }
 
+    /**
+     * 标签操作回调
+     * tag 增删查改的操作会在此方法中回调结果。
+     * @param context
+     * @param jPushMessage
+     */
     @Override
     public void onTagOperatorResult(Context context, final JPushMessage jPushMessage) {
         super.onTagOperatorResult(context, jPushMessage);
