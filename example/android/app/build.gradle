@@ -36,7 +36,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
 
-        applicationId "com.jiguang.jpushexample"
+        applicationId "com.example.flutterview"
+//        applicationId "com.jiguang.jpushexample"
 
 //        applicationId "com.shikk.testJpush" //JPush 上注册的包名.
 
@@ -47,33 +48,48 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 
-
-        ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips', 'mips64', 'arm64-v8a'
-            // 还可以添加
-        }
+//        ndk {
+//            //选择要添加的对应 cpu 类型的 .so 库。
+//            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips', 'mips64', 'arm64-v8a'
+//            // 还可以添加
+//        }
 
         manifestPlaceholders = [
                 JPUSH_PKGNAME : applicationId,
 //                JPUSH_APPKEY : "31c7c1b2cf59c1d42895a782", //JPush 上注册的包名对应的 Appkey.
-                JPUSH_APPKEY : "41799d8ebdef2b774fd46a9d", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_APPKEY : "4661639e45b9665d8e38ae91", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
         ]
     }
+//    signingConfigs {
+//        release {
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//            storeFile file(keystoreProperties['storeFile'])
+//            storePassword keystoreProperties['storePassword']
+//        }
+//    }
+
     signingConfigs {
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_ALIAS_PASSWORD
         }
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            ndk {
+                abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            }
+        }
+
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
