@@ -1,3 +1,10 @@
+## 2.3.8
++ 新增：testCountryCode API
+## 2.3.7
++ 升级：升级 Android JPush 4.8.1
+       升级 Android JCore 3.3.2
+       升级 IOS JPush 4.8.1
+       升级 IOS JCore 3.2.5
 ## 2.3.6
 + 新增：修复崩溃问题
 ## 2.3.5
