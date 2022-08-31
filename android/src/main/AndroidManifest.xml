@@ -16,6 +16,8 @@
             </intent-filter>
         </receiver>
 
+        <!-- User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调-->
+        <!--since 3.3.0 接收JPush相关事件-->
         <receiver android:name="com.jiguang.jpush.JPushEventReceiver"
             android:exported="false">
             <intent-filter>
