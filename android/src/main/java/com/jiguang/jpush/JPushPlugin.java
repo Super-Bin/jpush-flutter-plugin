@@ -1,5 +1,6 @@
 package com.jiguang.jpush;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,11 +33,12 @@ import io.flutter.plugin.common.MethodChannel.Result;
 
 /**
  * JPushPlugin
+ * onNewIntent https://blog.csdn.net/zenmela2011/article/details/122948041
  */
-public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
+public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
 
 
-    private static String TAG = "| JPUSH | Flutter | Android |";
+    private static String TAG = "JPUSH-Flutter-Android";
 
     public static JPushPlugin instance;
 
@@ -51,6 +53,8 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
     private MethodChannel channel;
     public Map<Integer, Result> callbackMap;
     private int sequence;
+
+    private Activity mainActivity;
 
     public JPushPlugin() {
         this.callbackMap = new HashMap<>();
@@ -73,6 +77,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null);
         instance.dartIsReady = false;
     }
+    
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
@@ -196,6 +201,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         JPushInterface.setChannel(context, channel);
 
         JPushPlugin.instance.dartIsReady = true;
+        Log.i(TAG, "instance.dartIsReady = true");
 
         // try to clean getRid cache
         scheduleCache();
@@ -489,7 +495,6 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
         }
     }
 
-
     static void transmitMessageReceive(String message, Map<String, Object> extras) {
         Log.d(TAG, "transmitMessageReceive " + "message=" + message + "extras=" + extras);
 
@@ -518,6 +523,7 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
             return;
         }
 
+        Log.d(TAG, "instance.dartIsReady = " + instance.dartIsReady);
         if (instance.dartIsReady) {
             Log.d("JPushPlugin", "instance.dartIsReady is true");
             JPushPlugin.instance.channel.invokeMethod("onOpenNotification", notification);

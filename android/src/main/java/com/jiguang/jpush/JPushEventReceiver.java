@@ -150,6 +150,14 @@ public class JPushEventReceiver extends JPushMessageReceiver {
         });
     }
 
+    /**
+     * 该方法会在以下情况触发时回调。
+     * 1.sdk 每次启动后都会检查通知开关状态并通过该方法回调给开发者。
+     * 2.当 sdk 检查到通知状态变更时会通过该方法回调给开发者。
+     * @param context
+     * @param isOn
+     * @param source
+     */
     @Override
     public void onNotificationSettingsCheck(Context context, boolean isOn, int source) {
         super.onNotificationSettingsCheck(context, isOn, source);

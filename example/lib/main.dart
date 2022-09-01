@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
         print("flutter onOpenNotification: $message");
         setState(() {
           debugLable = "flutter onOpenNotification: $message";
+          rid = "flutter onOpenNotification: $message";
         });
       }, onReceiveMessage: (Map<String, dynamic> message) async {
         print("flutter onReceiveMessage: $message");
@@ -76,9 +77,9 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     jpush.getRegistrationID().then((rid) {
       print("flutter get registration id : $rid");
-      this.rid = rid;
       setState(() {
         debugLable = "flutter getRegistrationID: $rid";
+        this.rid = rid;
       });
     });
 
