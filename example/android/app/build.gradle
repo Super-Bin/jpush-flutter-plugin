@@ -59,15 +59,16 @@ android {
 //                JPUSH_APPKEY : "31c7c1b2cf59c1d42895a782", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_APPKEY : "4661639e45b9665d8e38ae91", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-                MEIZU_APPKEY:"MZ-魅族的APPKEY",
-                MEIZU_APPID:"MZ-魅族的APPID",
-                XIAOMI_APPID:"MI-小米的APPID",
-                XIAOMI_APPKEY:"MI-小米的APPKEY",
-                OPPO_APPKEY:"OP-oppo的APPKEY",
-                OPPO_APPID:"OP-oppo的APPID",
-                OPPO_APPSECRET:"OP-oppo的APPSECRET",
-                VIVO_APPKEY:"vivo的APPKEY",
-                VIVO_APPID:"vivo的APPID"
+                MEIZU_APPKEY : "MZ-魅族的APPKEY",
+                MEIZU_APPID : "MZ-魅族的APPID",
+                XIAOMI_APPID : "MI-小米的APPID",
+                XIAOMI_APPKEY : "MI-小米的APPKEY",
+                OPPO_APPKEY : "OP-oppo的APPKEY",
+                OPPO_APPID : "OP-oppo的APPID",
+                OPPO_APPSECRET : "OP-oppo的APPSECRET",
+                VIVO_APPKEY : "vivo的APPKEY",
+                VIVO_APPID : "vivo的APPID",
+                HONOR_APPID : "Honor的APP ID"
         ]
     }
 //    signingConfigs {

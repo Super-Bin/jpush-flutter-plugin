@@ -51,7 +51,25 @@ dependencies {
     implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
     implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
 
-    //小米，版本和 JPush SDK 版本保持一致
+    //接入小米厂商，版本和 JPush SDK 版本保持一致
 //    implementation 'cn.jiguang.sdk.plugin:xiaomi:4.x.x'
+
+    //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
+//    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    // 极光厂商插件版本与接入 JPush 版本保持一致，下同
+//    implementation 'cn.jiguang.sdk.plugin:fcm:4.x.x'
+    //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
+//    implementation 'com.huawei.hms:push:6.3.0.304'
+//    implementation 'cn.jiguang.sdk.plugin:huawei:4.x.x'
+
+    // 接入荣耀厂商
+//    implementation 'cn.jiguang.sdk.plugin:honor:4.x.x'
+
+    // 接入魅族厂商
+//    implementation 'cn.jiguang.sdk.plugin:meizu:4.x.x'
+    // 接入 VIVO 厂商
+//    implementation 'cn.jiguang.sdk.plugin:vivo:4.x.x'
+    // 接入 OPPO 厂商
+//    implementation 'cn.jiguang.sdk.plugin:oppo:4.x.x'
 
 }

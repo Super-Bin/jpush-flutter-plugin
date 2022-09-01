@@ -68,6 +68,8 @@ class _MyAppState extends State<MyApp> {
       production: false, //android无效
       debug: true, //android有效
     );
+    /// 设置美国地区，验证fcm
+    jpush.testCountryCode("us");
     jpush.applyPushAuthority(
         new NotificationSettingsIOS(sound: true, alert: true, badge: true));
 
