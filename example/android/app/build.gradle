@@ -103,6 +103,13 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    // aar的目录
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 //    buildToolsVersion '28.0.1'
 
     packagingOptions {
