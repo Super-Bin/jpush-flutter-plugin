@@ -59,6 +59,15 @@ android {
 //                JPUSH_APPKEY : "31c7c1b2cf59c1d42895a782", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_APPKEY : "4661639e45b9665d8e38ae91", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                MEIZU_APPKEY:"MZ-魅族的APPKEY",
+                MEIZU_APPID:"MZ-魅族的APPID",
+                XIAOMI_APPID:"MI-小米的APPID",
+                XIAOMI_APPKEY:"MI-小米的APPKEY",
+                OPPO_APPKEY:"OP-oppo的APPKEY",
+                OPPO_APPID:"OP-oppo的APPID",
+                OPPO_APPSECRET:"OP-oppo的APPSECRET",
+                VIVO_APPKEY:"vivo的APPKEY",
+                VIVO_APPID:"vivo的APPID"
         ]
     }
 //    signingConfigs {
@@ -110,4 +119,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
+    implementation 'com.huawei.hms:push:6.3.0.304'
 }
+//谷歌请按照厂商文档配置根 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此插件依赖
+apply plugin: 'com.google.gms.google-services'
+//华为请按照厂商文档配置根 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此插件依赖
+apply plugin: 'com.huawei.agconnect'

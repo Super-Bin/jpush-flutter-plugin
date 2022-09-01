@@ -50,5 +50,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <!--Required_config-->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="${JPUSH_CHANNEL}" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="${JPUSH_APPKEY}" /> <!-- </>值来自开发者平台取得的AppKey -->
     </application>
 </manifest>

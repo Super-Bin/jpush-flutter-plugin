@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
     jpush.setup(
       appKey: "xxxxx", //你自己应用的 AppKey，android不需要
       // appKey: "com.jiguang.jpushexample", //你自己应用的 AppKey
-      channel: "theChannel",
+      channel: "developer-default",
       production: false, //android无效
       debug: true, //android有效
     );
