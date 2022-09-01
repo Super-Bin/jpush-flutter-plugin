@@ -33,11 +33,11 @@ android {
         disable 'InvalidPackage'
     }
 
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
 
     sourceSets {
         main {
