@@ -117,6 +117,8 @@ flutter {
 }
 
 dependencies {
+    // 打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

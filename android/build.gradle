@@ -48,7 +48,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+    // 打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
+//    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+    // 在真正使用aar包的moudle的gradle文件中配置
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly fileTree(include: ['*.aar'], dir: 'libs')
+
     implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
     implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
 
