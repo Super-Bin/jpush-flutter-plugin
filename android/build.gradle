@@ -33,11 +33,12 @@ android {
         disable 'InvalidPackage'
     }
 
-//    repositories {
-//        flatDir {
-//            dirs 'libs'
-//        }
-//    }
+    // 查找aar目录
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 
     sourceSets {
         main {
@@ -51,12 +52,13 @@ dependencies {
     implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
     implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
 
-    //接入小米厂商，版本和 JPush SDK 版本保持一致
+    //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
 //    implementation 'cn.jiguang.sdk.plugin:xiaomi:4.x.x'
 
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
 //    implementation 'com.google.firebase:firebase-messaging:23.0.0'
-    // 极光厂商插件版本与接入 JPush 版本保持一致，下同
+
+    // 极光厂商插件版本与接入 JPush 版本保持一致
 //    implementation 'cn.jiguang.sdk.plugin:fcm:4.x.x'
     //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
 //    implementation 'com.huawei.hms:push:6.3.0.304'
@@ -64,6 +66,9 @@ dependencies {
 
     // 接入荣耀厂商
 //    implementation 'cn.jiguang.sdk.plugin:honor:4.x.x'
+    //需要单独引入荣耀厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/honor/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
+//    implementation(name: 'HiPushSdk-v6.0.4.200-release', ext: 'aar')
+//    implementation(name: 'HiPushSdkCommon-v6.0.4.200-release', ext: 'aar')
 
     // 接入魅族厂商
 //    implementation 'cn.jiguang.sdk.plugin:meizu:4.x.x'
@@ -71,5 +76,11 @@ dependencies {
 //    implementation 'cn.jiguang.sdk.plugin:vivo:4.x.x'
     // 接入 OPPO 厂商
 //    implementation 'cn.jiguang.sdk.plugin:oppo:4.x.x'
+    // JPush Android SDK v4.6.0 开始，需要单独引入 oppo 厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/oppo/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
+//    implementation(name: 'com.heytap.msp-push-3.1.0', ext: 'aar')
+    //以下为 OPPO 3.1.0 aar需要依赖
+//    implementation 'com.google.code.gson:gson:2.8.9'
+//    implementation 'commons-codec:commons-codec:1.15'
+//    implementation 'androidx.annotation:annotation:1.4.0'
 
 }

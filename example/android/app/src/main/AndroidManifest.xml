@@ -6,6 +6,10 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -50,13 +54,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-
-        <!--Required_config-->
-        <meta-data
-            android:name="JPUSH_CHANNEL"
-            android:value="${JPUSH_CHANNEL}" />
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="${JPUSH_APPKEY}" /> <!-- </>值来自开发者平台取得的AppKey -->
     </application>
 </manifest>
