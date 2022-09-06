@@ -1,7 +1,10 @@
+// 导入配置文件
+apply from: 'config.gradle'
+
 buildscript {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         //hms
         maven {url 'http://developer.huawei.com/repo/'}
         //fcm
@@ -23,8 +26,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         //hms
         maven {url 'http://developer.huawei.com/repo/'}
         //fcm

@@ -1,0 +1,12 @@
+// 工程基本配置
+ext {
+    isGoogle = false
+    jpushVersion = '4.8.1'
+    jcoreVersion = '3.3.2'
+
+    // 以下测试参数
+    DEF_APKTYPE_XTC = "xiaomi"
+    // gradle assembleRelease -P${参数名}=${参数值}
+    //在jenkins或者本地执行 gradlew clean assembleDebug -PAPK_TYPE="okii" 则可以传递参数 APK_TYPE
+    apkType = project.hasProperty('APK_TYPE') ? APK_TYPE : DEF_APKTYPE_XTC
+}

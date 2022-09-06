@@ -123,6 +123,32 @@ flutter {
     source '../..'
 }
 
+
+
+task getCurrentFlavor() {
+
+    if (project.hasProperty("useGoogle") ) {
+        rootProject.ext.isGoogle = true
+    }else {
+        rootProject.ext.isGoogle = false
+    }
+    println "当前isGoogle = ${rootProject.ext.isGoogle}"
+
+}
+// 构建之前执行
+preBuild.dependsOn getCurrentFlavor
+
+//判断是否是国内
+def isDomestic() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    println tskReqStr
+    println "module tskReqStr = $tskReqStr";
+    println "module RELEASE_KEY_ALIAS = ${rootProject.ext.isGoogle}";
+    return tskReqStr.contains("Domestic")
+
+}
+
 dependencies {
     // 打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
     implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
@@ -139,3 +165,4 @@ dependencies {
 apply plugin: 'com.google.gms.google-services'
 //华为请按照厂商文档配置根 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此插件依赖
 apply plugin: 'com.huawei.agconnect'
+

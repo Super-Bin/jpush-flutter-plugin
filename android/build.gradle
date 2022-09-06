@@ -54,8 +54,14 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly fileTree(include: ['*.aar'], dir: 'libs')
 
-    implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
-    implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
+    if(rootProject.ext.isGoogle){
+        implementation 'cn.jiguang.sdk:jpush-google:4.8.1'  // 此处以JPush 4.8.1 Google Play版本为例
+        implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play 版本为例。
+    }else {
+        implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
+        implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
+    }
+
 
     //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
 //    implementation 'cn.jiguang.sdk.plugin:xiaomi:4.x.x'
