@@ -392,6 +392,11 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         }
     }
 
+    /**
+     * 华为、荣耀、vivo设置角标
+     * @param call
+     * @param result
+     */
     public void setBadge(MethodCall call, Result result) {
         Log.d(TAG, "setBadge: " + call.arguments);
 
