@@ -47,6 +47,12 @@ android {
     }
 }
 
+def getExtOrDefault(name, version) {
+    return rootProject.ext.has(name) ? rootProject.ext.get(name) : version
+}
+def jpushVersion = getExtOrDefault('jpushVersion', "4.8.1")
+def jcoreVersion = getExtOrDefault('jcoreVersion', "3.3.2")
+
 dependencies {
     // 打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
 //    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
@@ -57,9 +63,15 @@ dependencies {
     if(rootProject.ext.isGoogle){
         implementation 'cn.jiguang.sdk:jpush-google:4.8.1'  // 此处以JPush 4.8.1 Google Play版本为例
         implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play 版本为例。
+
+        implementation "cn.jiguang.sdk:jpush-google:$jpushVersion"  // 此处以JPush 4.8.1 Google Play版本为例
+        implementation "cn.jiguang.sdk:jcore-google:$jcoreVersion"  // 此处以JCore 3.3.2 Google Play 版本为例。
     }else {
-        implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
-        implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
+//        implementation 'cn.jiguang.sdk:jpush:4.8.1'  // 此处以JPush 4.8.1 版本为例。
+//        implementation 'cn.jiguang.sdk:jcore:3.3.2'  // 此处以JCore 3.3.2 版本为例。
+
+        implementation "cn.jiguang.sdk:jpush:$jpushVersion"  // 此处以JPush 4.8.1 版本为例。
+        implementation "cn.jiguang.sdk:jcore:$jcoreVersion"  // 此处以JCore 3.3.2 版本为例。
     }
 
 
