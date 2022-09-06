@@ -35,6 +35,7 @@
     <!--meizu_permission_end-->
 
     <application>
+        <!-- 这应该是v3.3之前版本使用的接收通知处理方式        -->
         <receiver
             android:name="com.jiguang.jpush.JPushPlugin$JPushReceiver"
             android:enabled="true"
