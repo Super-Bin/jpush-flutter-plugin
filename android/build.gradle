@@ -54,15 +54,16 @@ def jpushVersion = getExtOrDefault('jpushVersion', "4.8.1")
 def jcoreVersion = getExtOrDefault('jcoreVersion', "3.3.2")
 
 dependencies {
-    // 打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
+    // 要分开配置，打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704
 //    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
-    // 在真正使用aar包的moudle的gradle文件中配置
+
+    // 在真正使用aar包的moudle的gradle文件中配置，下面是使用jar包，
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly fileTree(include: ['*.aar'], dir: 'libs')
 
     if(rootProject.ext.isGoogle){
-        implementation 'cn.jiguang.sdk:jpush-google:4.8.1'  // 此处以JPush 4.8.1 Google Play版本为例
-        implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play 版本为例。
+//        implementation 'cn.jiguang.sdk:jpush-google:4.8.1'  // 此处以JPush 4.8.1 Google Play版本为例
+//        implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play 版本为例。
 
         implementation "cn.jiguang.sdk:jpush-google:$jpushVersion"  // 此处以JPush 4.8.1 Google Play版本为例
         implementation "cn.jiguang.sdk:jcore-google:$jcoreVersion"  // 此处以JCore 3.3.2 Google Play 版本为例。
@@ -75,39 +76,42 @@ dependencies {
     }
 
 
+    // 如果打开implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // 使用jar包依赖，下面的厂商mavenCentral可以关闭
+
     //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
-//    implementation 'cn.jiguang.sdk.plugin:xiaomi:4.x.x'
+//    implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
+
+    //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
+//    implementation 'com.huawei.hms:push:6.5.0.300' 不是这里打开
+//    implementation "cn.jiguang.sdk.plugin:huawei:$jpushVersion"
 
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
 //    implementation 'com.google.firebase:firebase-messaging:23.0.0'
-
     // 极光厂商插件版本与接入 JPush 版本保持一致
 //    implementation 'cn.jiguang.sdk.plugin:fcm:4.x.x'
-    //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
-//    implementation 'com.huawei.hms:push:6.5.0.300'
-//    implementation 'cn.jiguang.sdk.plugin:huawei:4.x.x'
 
     // 接入荣耀厂商
-//    implementation 'cn.jiguang.sdk.plugin:honor:4.x.x'
+//    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
     //需要单独引入荣耀厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/honor/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
 //    implementation(name: 'HiPushSdk-v6.0.4.200-release', ext: 'aar')
 //    implementation(name: 'HiPushSdkCommon-v6.0.4.200-release', ext: 'aar')
 
     // 接入魅族厂商
-//    implementation 'cn.jiguang.sdk.plugin:meizu:4.x.x'
+//    implementation "cn.jiguang.sdk.plugin:meizu:$jpushVersion"
 
     // 接入 VIVO 厂商
-//    implementation 'cn.jiguang.sdk.plugin:vivo:4.x.x'
-    // VIVO单独引入的库, https://dev.vivo.com.cn/documentCenter/doc/365
+//    implementation "cn.jiguang.sdk.plugin:vivo:$jpushVersion"
+    // VIVO引入的库, https://dev.vivo.com.cn/documentCenter/doc/365
 //    implementation(name: 'push_sdk_v3.0.0.4_484', ext: 'aar')
 
     // 接入 OPPO 厂商
-//    implementation 'cn.jiguang.sdk.plugin:oppo:4.x.x'
+//    implementation "cn.jiguang.sdk.plugin:oppo:$jpushVersion"
     // JPush Android SDK v4.6.0 开始，需要单独引入 oppo 厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/oppo/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
 //    implementation(name: 'com.heytap.msp-push-3.1.0', ext: 'aar')
 
     //以下为 OPPO 3.1.0 aar需要依赖
-//    implementation 'com.google.code.gson:gson:2.8.9'
+//    implementation 'com.google.code.gson:gson:2.8.6'
 //    implementation 'commons-codec:commons-codec:1.15'
 //    implementation 'androidx.annotation:annotation:1.4.0'
 
