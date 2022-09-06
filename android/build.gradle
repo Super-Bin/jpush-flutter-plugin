@@ -83,7 +83,7 @@ dependencies {
 //    implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
 
     //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
-//    implementation 'com.huawei.hms:push:6.5.0.300' 不是这里打开
+//    implementation 'com.huawei.hms:push:6.5.0.300' 在主gradle配置
 //    implementation "cn.jiguang.sdk.plugin:huawei:$jpushVersion"
 
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
