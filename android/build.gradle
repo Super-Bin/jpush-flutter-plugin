@@ -66,7 +66,7 @@ dependencies {
     // 极光厂商插件版本与接入 JPush 版本保持一致
 //    implementation 'cn.jiguang.sdk.plugin:fcm:4.x.x'
     //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
-//    implementation 'com.huawei.hms:push:6.3.0.304'
+//    implementation 'com.huawei.hms:push:6.5.0.300'
 //    implementation 'cn.jiguang.sdk.plugin:huawei:4.x.x'
 
     // 接入荣耀厂商
@@ -77,12 +77,17 @@ dependencies {
 
     // 接入魅族厂商
 //    implementation 'cn.jiguang.sdk.plugin:meizu:4.x.x'
+
     // 接入 VIVO 厂商
 //    implementation 'cn.jiguang.sdk.plugin:vivo:4.x.x'
+    // VIVO单独引入的库, https://dev.vivo.com.cn/documentCenter/doc/365
+//    implementation(name: 'push_sdk_v3.0.0.4_484', ext: 'aar')
+
     // 接入 OPPO 厂商
 //    implementation 'cn.jiguang.sdk.plugin:oppo:4.x.x'
     // JPush Android SDK v4.6.0 开始，需要单独引入 oppo 厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/oppo/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
 //    implementation(name: 'com.heytap.msp-push-3.1.0', ext: 'aar')
+
     //以下为 OPPO 3.1.0 aar需要依赖
 //    implementation 'com.google.code.gson:gson:2.8.9'
 //    implementation 'commons-codec:commons-codec:1.15'
