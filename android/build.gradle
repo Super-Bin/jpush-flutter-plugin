@@ -79,6 +79,14 @@ dependencies {
     // 如果打开implementation fileTree(include: ['*.jar'], dir: 'libs')
     // 使用jar包依赖，下面的厂商mavenCentral可以关闭
 
+    /**
+     * 使用在线配置，不需要自己在AndroidManifest加入小米相关的监听，因为在线引入aar文件里面包括了AndroidManifest文件。
+     * 它里面已经配置好了相关监听，打包会合并到主AndroidManifest中。
+     *
+     * 如果使用jar包依赖，则需要自己在在AndroidManifest加入小米相关的监听。
+     *
+     * 其他厂商同理。
+     */
     //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
 //    implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
 
