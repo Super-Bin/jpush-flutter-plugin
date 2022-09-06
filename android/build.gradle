@@ -110,9 +110,9 @@ dependencies {
 //    implementation "cn.jiguang.sdk.plugin:meizu:$jpushVersion"
     // 可以不用引入meizu-push-4.1.4.jar，但由于是jar，可以不用放到主app/libs目录下。 而且在线引用会自动导入jar包
 
-    // 接入 VIVO 厂商
+    // 接入 VIVO 厂商，在线引入会引入push_sdk_v3.0.0.4_484.jar，所以没必要在保留lib中的push_sdk_v3.0.0.4_484.aar
 //    implementation "cn.jiguang.sdk.plugin:vivo:$jpushVersion"
-    // VIVO引入的库, https://dev.vivo.com.cn/documentCenter/doc/365
+    // VIVO需要引入的库, https://dev.vivo.com.cn/documentCenter/doc/365
 //    implementation(name: 'push_sdk_v3.0.0.4_484', ext: 'aar')
 
     // 接入 OPPO 厂商

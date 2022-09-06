@@ -151,30 +151,7 @@
             android:value="${OPPO_APPSECRET}" />
         <!--oppo_config_end-->
 
-        <!--vivo_config_start-->
-        <receiver android:name="cn.jpush.android.service.PluginVivoMessageReceiver"
-            android:exported="true">
-
-            <intent-filter>
-                <!-- 接收 push 消息 -->
-                <action android:name="com.vivo.pushclient.action.RECEIVE" />
-            </intent-filter>
-        </receiver>
-        <service
-            android:name="com.vivo.push.sdk.service.CommandClientService"
-            android:exported="true" />
-        <activity
-            android:name="com.vivo.push.sdk.LinkProxyClientActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <meta-data
-            android:name="com.vivo.push.api_key"
-            android:value="${VIVO_APPKEY}" />
-        <meta-data
-            android:name="com.vivo.push.app_id"
-            android:value="${VIVO_APPID}" />
+        <!--vivo_config_start 通过在线配置自动引入-->
         <!--vivo_config_end-->
 
         <!--honor_config_start 通过在线配置自动引入-->
