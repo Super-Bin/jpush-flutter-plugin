@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    jpush.setBadge(0);
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.

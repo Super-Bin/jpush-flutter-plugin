@@ -58,7 +58,7 @@ dependencies {
 //    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
 
     // 在真正使用aar包的moudle的gradle文件中配置，下面是使用jar包，
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly fileTree(include: ['*.aar'], dir: 'libs')
 
     if(rootProject.ext.isGoogle){
@@ -88,11 +88,11 @@ dependencies {
      * 其他厂商同理。
      */
     //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
-//    implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
+    implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
 
     //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
 //    implementation 'com.huawei.hms:push:6.5.0.300' 在主gradle配置
-//    implementation "cn.jiguang.sdk.plugin:huawei:$jpushVersion"
+    implementation "cn.jiguang.sdk.plugin:huawei:$jpushVersion"
 
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
 //    implementation 'com.google.firebase:firebase-messaging:23.0.0'
