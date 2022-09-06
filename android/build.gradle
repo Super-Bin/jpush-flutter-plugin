@@ -100,7 +100,7 @@ dependencies {
 //    implementation "cn.jiguang.sdk.plugin:fcm:$jpushVersion"
 
     // 接入荣耀厂商
-    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
+//    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
     //需要单独引入荣耀厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/honor/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
     // 如果以module或插件的形式引入，还需要拷贝到app主module/lib下一份
 //    implementation(name: 'HiPushSdk-v6.0.4.200-release', ext: 'aar')
@@ -108,7 +108,7 @@ dependencies {
 
     // 接入魅族厂商
 //    implementation "cn.jiguang.sdk.plugin:meizu:$jpushVersion"
-    // 应该需要引入，meizu-push-4.1.4.jar，但由于是jar，可以不用放到主app/libs目录下
+    // 可以不用引入meizu-push-4.1.4.jar，但由于是jar，可以不用放到主app/libs目录下。 而且在线引用会自动导入jar包
 
     // 接入 VIVO 厂商
 //    implementation "cn.jiguang.sdk.plugin:vivo:$jpushVersion"
