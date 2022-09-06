@@ -118,37 +118,10 @@
 <!--            android:resource="@drawable/jpush_notification_icon" />-->
         <!--fcm_config_end-->
 
-        <!--oppo_config_start-->
-        <service
-            android:name="cn.jpush.android.service.PluginOppoPushService"
-            android:permission="com.coloros.mcs.permission.SEND_MCS_MESSAGE"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="com.coloros.mcs.action.RECEIVE_MCS_MESSAGE" />
-            </intent-filter>
-        </service>
+        <!--oppo_config_start 通过在线配置自动引入-->
         <!-- since JPushv3.6.8 ，oppov2.1.0 oppo 核心功能-->
-        <service
-            android:name="com.heytap.msp.push.service.DataMessageCallbackService"
-            android:permission="com.heytap.mcs.permission.SEND_PUSH_MESSAGE"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="com.heytap.mcs.action.RECEIVE_MCS_MESSAGE" />
-
-                <action android:name="com.heytap.msp.push.RECEIVE_MCS_MESSAGE" />
-            </intent-filter>
-        </service> <!--兼容Q版本-->
-        <meta-data
-            android:name="OPPO_APPKEY"
-            android:value="${OPPO_APPKEY}" />
-        <meta-data
-            android:name="OPPO_APPID"
-            android:value="${OPPO_APPID}" />
-        <meta-data
-            android:name="OPPO_APPSECRET"
-            android:value="${OPPO_APPSECRET}" />
+<!--        <service android:name="com.heytap.msp.push.service.DataMessageCallbackService">-->
+        <!--兼容Q版本-->
         <!--oppo_config_end-->
 
         <!--vivo_config_start 通过在线配置自动引入-->
@@ -157,13 +130,6 @@
         <!--honor_config_start 通过在线配置自动引入-->
         <!--honor_config_end-->
 
-        <!--Required_config-->
-        <meta-data
-            android:name="JPUSH_CHANNEL"
-            android:value="${JPUSH_CHANNEL}" />
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="${JPUSH_APPKEY}" /> <!-- </>值来自开发者平台取得的AppKey -->
 
     </application>
 
