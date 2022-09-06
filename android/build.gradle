@@ -97,10 +97,10 @@ dependencies {
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
 //    implementation 'com.google.firebase:firebase-messaging:23.0.0'
     // 极光厂商插件版本与接入 JPush 版本保持一致
-//    implementation 'cn.jiguang.sdk.plugin:fcm:4.x.x'
+//    implementation "cn.jiguang.sdk.plugin:fcm:$jpushVersion"
 
     // 接入荣耀厂商
-//    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
+    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
     //需要单独引入荣耀厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/honor/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
 //    implementation(name: 'HiPushSdk-v6.0.4.200-release', ext: 'aar')
 //    implementation(name: 'HiPushSdkCommon-v6.0.4.200-release', ext: 'aar')
