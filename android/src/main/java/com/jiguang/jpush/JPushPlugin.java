@@ -40,7 +40,7 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
 
     private static String TAG = "JPUSH-Flutter-Android";
 
-    public static JPushPlugin instance;
+    public volatile static JPushPlugin instance;
 
     static List<Map<String, Object>> openNotificationCache = new ArrayList<>();
 
@@ -60,7 +60,24 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         this.callbackMap = new HashMap<>();
         this.sequence = 0;
         this.getRidCache = new ArrayList<>();
-        instance = this;
+//        instance = this;
+        getInstance(this);
+    }
+
+    // 可能会出现多线程多个单例
+    public static synchronized JPushPlugin getInstance(JPushPlugin jPushPlugin) {
+
+        if (instance == null) {//第一次判空：无需每次都加锁，提高性能
+
+            synchronized (JPushPlugin.class) {//第二层锁：保证线程同步
+
+                if (instance == null) {//第二次判空:避免多线程同时执行getInstance()产生多个single对象
+
+                    instance = jPushPlugin;
+                }
+            }
+        }
+        return instance;
     }
 
 
@@ -213,7 +230,8 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
             return;
         }
         List<Object> tempList = new ArrayList<Object>();
-
+        Log.d(TAG, "scheduleCache instance = " + instance);
+        Log.d(TAG, "scheduleCache instance.dartIsReady = " + instance.dartIsReady);
         if (dartIsReady) {
             // try to shedule notifcation cache
             List<Map<String, Object>> openNotificationCacheList = JPushPlugin.openNotificationCache;
