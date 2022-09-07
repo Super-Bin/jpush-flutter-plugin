@@ -201,7 +201,7 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         JPushInterface.setChannel(context, channel);
 
         JPushPlugin.instance.dartIsReady = true;
-        Log.i(TAG, "instance.dartIsReady = true");
+        Log.i(TAG, "初始化 instance.dartIsReady = true");
 
         // try to clean getRid cache
         scheduleCache();
@@ -503,6 +503,9 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
     static void transmitMessageReceive(String message, Map<String, Object> extras) {
         Log.d(TAG, "transmitMessageReceive " + "message=" + message + "extras=" + extras);
 
+        Log.d(TAG, "transmitMessageReceive instance = " + instance);
+        Log.d(TAG, "transmitMessageReceive instance.dartIsReady = " + instance.dartIsReady);
+
         if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
@@ -522,7 +525,8 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         notification.put("alert", alert);
         notification.put("extras", extras);
         JPushPlugin.openNotificationCache.add(notification);
-
+        Log.d(TAG, "transmitNotificationOpen instance = " + instance);
+        Log.d(TAG, "transmitNotificationOpen instance.dartIsReady = " + instance.dartIsReady);
         if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;
@@ -587,7 +591,8 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
 
     static void transmitNotificationReceive(String title, String alert, Map<String, Object> extras) {
         Log.d(TAG, "transmitNotificationReceive " + "title=" + title + "alert=" + alert + "extras=" + extras);
-
+        Log.d(TAG, "transmitNotificationReceive instance = " + instance);
+        Log.d(TAG, "transmitNotificationReceive instance.dartIsReady = " + instance.dartIsReady);
         if (instance == null || instance.channel == null) {
             Log.d("JPushPlugin", "the instance is null");
             return;

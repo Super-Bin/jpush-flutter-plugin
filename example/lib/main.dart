@@ -48,15 +48,15 @@ class _MyAppState extends State<MyApp> {
       }, onReceiveNotificationAuthorization:
               (Map<String, dynamic> message) async {
         print("flutter onReceiveNotificationAuthorization: $message");
-        setState(() {
-          debugLable = "flutter onReceiveNotificationAuthorization: $message";
-        });
+        // setState(() {
+        //   debugLable = "flutter onReceiveNotificationAuthorization: $message";
+        // });
       },onNotifyMessageUnShow:
           (Map<String, dynamic> message) async {
         print("flutter onNotifyMessageUnShow: $message");
-        setState(() {
-          debugLable = "flutter onNotifyMessageUnShow: $message";
-        });
+        // setState(() {
+        //   debugLable = "flutter onNotifyMessageUnShow: $message";
+        // });
       });
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
