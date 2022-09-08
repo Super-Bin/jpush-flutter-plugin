@@ -61,11 +61,11 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         this.sequence = 0;
         this.getRidCache = new ArrayList<>();
 //        instance = this;
-        getInstance(this);
+        initInstance(this);
     }
 
     // 可能会出现多线程多个单例
-    public static synchronized JPushPlugin getInstance(JPushPlugin jPushPlugin) {
+    public static synchronized JPushPlugin initInstance(JPushPlugin jPushPlugin) {
 
         if (instance == null) {//第一次判空：无需每次都加锁，提高性能
 
@@ -217,8 +217,10 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         String channel = (String) map.get("channel");
         JPushInterface.setChannel(context, channel);
 
+        Log.d(TAG, "最开始的值JPushPlugin.instance.dartIsReady = " + JPushPlugin.instance.dartIsReady);
         JPushPlugin.instance.dartIsReady = true;
         Log.i(TAG, "初始化 instance.dartIsReady = true");
+        Log.i(TAG, "instance.dartIsReady 实际结果 = " + JPushPlugin.instance.dartIsReady);
 
         // try to clean getRid cache
         scheduleCache();

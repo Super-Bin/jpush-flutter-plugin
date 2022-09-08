@@ -81,7 +81,9 @@ dependencies {
      * 其他厂商同理。
      */
     //接入小米厂商，版本和 JPush SDK 版本保持一致，下同
+    //小米需要引入MiPush_SDK_Client_5_0_8-C.jar，但在线引用会自动导入jar包
     implementation "cn.jiguang.sdk.plugin:xiaomi:$jpushVersion"
+
 
     //华为请按照厂商文档配置主 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此依赖
 //    implementation 'com.huawei.hms:push:6.5.0.300' 在主gradle配置
