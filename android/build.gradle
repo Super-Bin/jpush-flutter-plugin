@@ -90,7 +90,7 @@ dependencies {
     implementation "cn.jiguang.sdk.plugin:huawei:$jpushVersion"
     //JPush Android SDK 4.6.0 以上版本更新华为 HMS SDK 版本为:6.3.0.304 及以上版本,接入要求：Android Studio 3.6.1 或更高版本、Android Gradle 插件 3.5.4 或更高版本。
     // 放在module（这里）中也行，不用放在主gradle
-    implementation 'com.huawei.hms:push:6.5.0.300'
+//    implementation 'com.huawei.hms:push:6.5.0.300'
 
     //谷歌请按照厂商文档配置主 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此依赖
 //    implementation 'com.google.firebase:firebase-messaging:23.0.0'
