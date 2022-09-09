@@ -128,6 +128,7 @@ flutter {
 
 task getCurrentFlavor() {
 
+    // 加一个参数，表示使用google，命令行好加入，但用as还不清楚怎么加
     if (project.hasProperty("useGoogle") ) {
         rootProject.ext.isGoogle = true
     }else {
@@ -139,7 +140,7 @@ task getCurrentFlavor() {
 // 构建之前执行
 preBuild.dependsOn getCurrentFlavor
 
-//判断是否是国内
+//判断是否是国内，暂时没有用
 def isDomestic() {
     Gradle gradle = getGradle()
     String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
@@ -164,7 +165,11 @@ dependencies {
     implementation 'com.huawei.hms:push:6.5.0.300'
 }
 //谷歌请按照厂商文档配置根 gradle 谷歌镜像依赖和添加 google-services.json 后再打开此插件依赖
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
+if(rootProject.ext.isGoogle){
+    println "当前需要加载gms"
+    apply plugin: 'com.google.gms.google-services'
+}
 //华为请按照厂商文档配置根 gradle 华为镜像依赖和添加 agconnect-services.json 后再打开此插件依赖
 apply plugin: 'com.huawei.agconnect'
 
