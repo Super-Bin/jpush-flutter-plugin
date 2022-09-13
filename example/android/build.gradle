@@ -18,7 +18,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
         //fcm
-        classpath 'com.google.gms:google-services:4.3.4'
+//        classpath 'com.google.gms:google-services:4.3.4'
         //huawei
         classpath 'com.huawei.agconnect:agcp:1.6.0.300'
     }

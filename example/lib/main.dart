@@ -14,13 +14,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String? debugLable = 'Unknown';
   String? rid = '';
-  final JPush jpush = new JPush();
+  // final JPush jpush = new JPush();
+  late JPush jpush;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-    jpush.setBadge(0);
+    // initPlatformState();
+    // jpush.setBadge(0);
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
