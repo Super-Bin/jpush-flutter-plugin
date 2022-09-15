@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:jpush_example/jpush_android_model.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 
 void main() => runApp(new MyApp());
@@ -14,13 +17,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String? debugLable = 'Unknown';
   String? rid = '';
-  // final JPush jpush = new JPush();
-  late JPush jpush;
+  final JPush jpush = new JPush();
+  // late JPush jpush;
 
   @override
   void initState() {
     super.initState();
-    // initPlatformState();
+    initPlatformState();
     // jpush.setBadge(0);
   }
 
@@ -32,6 +35,9 @@ class _MyAppState extends State<MyApp> {
       jpush.addEventHandler(
           onReceiveNotification: (Map<String, dynamic> message) async {
         print("flutter onReceiveNotification: $message");
+        /// android通知栏回调
+        /// 测试处理数据
+        handleMsg(message);
         setState(() {
           debugLable = "flutter onReceiveNotification: $message";
         });
@@ -93,6 +99,26 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       debugLable = platformVersion;
     });
+  }
+
+  /// 处理消息
+  /// {alert: 过来数据了吧, extras: {cn.jpush.android.ALERT_TYPE: 7, cn.jpush.android.NOTIFICATION_ID: 512426856, cn.jpush.android.MSG_ID: 18100352286206560, cn.jpush.android.ALERT: 过来数据了吧, cn.jpush.android.EXTRA: {"name":"傻逼"}}, title: flutter推送}
+  void handleMsg(Map<String, dynamic> message){
+    print("——————————开始处理消息——————————");
+
+    try{
+      JpushAndroidModel jpushAndroidModel = JpushAndroidModel.fromJson(message);
+      print("转换后的数据 ${jpushAndroidModel.toJson()}");
+
+      Map<String, dynamic>? extraExtra = jsonDecode(message['extras']['cn.jpush.android.EXTRA']);
+      print("extraExtra转换后的数据 ${extraExtra.toString()}");
+      print("extraExtra转换后的数据 name = ${extraExtra?["name"]}");
+      print("extraExtra转换后的数据 order = ${extraExtra?["order"]}");
+    }catch (e){
+      print("解析数据出问题 $e");
+    }
+
+    print("——————————结束处理消息——————————");
   }
 
 // 编写视图

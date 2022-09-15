@@ -40,7 +40,7 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
 
     private static String TAG = "JPUSH-Flutter-Android";
 
-    public volatile static JPushPlugin instance;
+    public static JPushPlugin instance;
 
     static List<Map<String, Object>> openNotificationCache = new ArrayList<>();
 
