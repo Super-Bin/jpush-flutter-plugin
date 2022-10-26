@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
     jpush.getRegistrationID().then((rid) {
       print("flutter get registration id : $rid");
       setState(() {
-        debugLable = "flutter getRegistrationID: $rid";
+        // debugLable = "flutter getRegistrationID: $rid";
         this.rid = rid;
       });
     });

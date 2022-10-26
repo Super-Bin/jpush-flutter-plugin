@@ -59,6 +59,9 @@ dependencies {
 //    implementation fileTree(include: ['*.jar'], dir: 'libs')
     compileOnly fileTree(include: ['*.aar'], dir: 'libs')
 
+    /**
+     * libjcore336.so等so库，会自动依赖，不需要手动添加
+     */
     if(rootProject.ext.isGoogle){
 
         implementation "cn.jiguang.sdk:jpush-google:$jpushVersion"  // 此处以JPush 4.8.1 Google Play版本为例
@@ -100,6 +103,7 @@ dependencies {
     // 接入荣耀厂商
 //    implementation "cn.jiguang.sdk.plugin:honor:$jpushVersion"
     //需要单独引入荣耀厂商 aar ，请下载官网 SDK 包并把 jpush-android-xxx-release/third-push/honor/libs 下的 aar 文件单独拷贝一份到应用 module/libs 下
+    //荣耀推送 SDK从 V7.0.1.103 只保留 HiPushSdk 文件，原来的 HiPushSdkCommon 文件已去掉
     // 如果以module或插件的形式引入，还需要拷贝到app主module/lib下一份
 //    implementation(name: 'HiPushSdk-v6.0.4.200-release', ext: 'aar')
 //    implementation(name: 'HiPushSdkCommon-v6.0.4.200-release', ext: 'aar')
