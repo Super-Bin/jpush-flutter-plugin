@@ -1,3 +1,8 @@
+## 2.4.0
++ 升级：升级 Android JPush 4.8.4
+## 2.3.9
++ 升级：升级 Android JPush 4.8.3
+       升级 Android JCore 3.3.6
 ## 2.3.8+2
 去掉java中的volatile
 ## 2.3.8+1
