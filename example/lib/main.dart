@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
     String? platformVersion;
 
     try {
+      jpush.createNotificationChannel("orderChannelId", "OrderInfo", true);
       jpush.addEventHandler(
           onReceiveNotification: (Map<String, dynamic> message) async {
         print("flutter onReceiveNotification: $message");

@@ -26,6 +26,22 @@ class JPush {
   EventHandler? _onReceiveMessage;
   EventHandler? _onReceiveNotificationAuthorization;
   EventHandler? _onNotifyMessageUnShow;
+
+  /// 创建通知通道
+  void createNotificationChannel(
+    String channelId,
+    String channelName,
+    bool highImportance,
+  ) {
+    print(flutter_log + "createNotificationChannel:");
+
+    _channel.invokeMethod('createNotificationChannel', {
+      'channelId': channelId,
+      'channelName': channelName,
+      'highImportance': highImportance
+    });
+  }
+
   void setup({
     String appKey = '',
     bool production = false,

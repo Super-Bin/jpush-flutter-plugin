@@ -1,9 +1,12 @@
 package com.jiguang.jpush;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -101,6 +104,8 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         Log.i(TAG, call.method);
         if (call.method.equals("getPlatformVersion")) {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
+        } else if (call.method.equals("createNotificationChannel")) {
+            createNotificationChannel(call, result);
         } else if (call.method.equals("setup")) {
             setup(call, result);
         } else if (call.method.equals("setTags")) {
@@ -149,6 +154,37 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         } else {
             result.notImplemented();
         }
+    }
+
+    // 创建通道
+    private void createNotificationChannel(MethodCall call, Result result) {
+        Map<String, Object> arguments = call.arguments();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = (String) arguments.get("channelId");
+            String channelName = (String) arguments.get("channelName");
+            Boolean highImportance = (Boolean) arguments.get("highImportance");
+
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            if(highImportance == true){
+                importance = NotificationManager.IMPORTANCE_HIGH;
+            }
+            NotificationManager notificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel notificationChannel =
+                    new NotificationChannel(
+                            channelId,
+                            channelName,
+                            importance);
+
+            // 重要通知，显示闪光灯、震动，其他情况就按普通处理
+            if (importance == NotificationManager.IMPORTANCE_HIGH) {
+                notificationChannel.enableLights(true);
+                notificationChannel.enableVibration(true);
+            }
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        result.success(null);
     }
 
     // 同意隐私政策
@@ -446,6 +482,7 @@ public class JPushPlugin implements FlutterPlugin,MethodCallHandler {
         JPushInterface.goToAppNotificationSettings(context);
 
     }
+
 
     /**
      * 接收自定义消息,通知,通知点击事件等事件的广播

@@ -1,3 +1,5 @@
+## 2.4.0+1
++ 增加createNotificationChannel，创建通道
 ## 2.4.0
 + 升级：升级 Android JPush 4.8.4
 ## 2.3.9
