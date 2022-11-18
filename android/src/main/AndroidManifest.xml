@@ -75,31 +75,31 @@
             </intent-filter>
         </service>
 
-        <!-- Required SDK核心功能 -->
-        <receiver
-            android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!-- Required  显示通知栏 -->
-                <category android:name="${JPUSH_PKGNAME}" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-            <!-- Optional -->
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+        <!-- Required SDK核心功能  通过在线配置自动引入在jpush库中 -->
+<!--        <receiver-->
+<!--            android:name="cn.jpush.android.service.PushReceiver"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter android:priority="1000">-->
+<!--                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> &lt;!&ndash; Required  显示通知栏 &ndash;&gt;-->
+<!--                <category android:name="${JPUSH_PKGNAME}" />-->
+<!--            </intent-filter>-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />-->
+<!--            </intent-filter>-->
+<!--            &lt;!&ndash; Optional &ndash;&gt;-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.PACKAGE_ADDED" />-->
+<!--                <action android:name="android.intent.action.PACKAGE_REMOVED" />-->
 
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
+<!--                <data android:scheme="package" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
 
-        <!-- Required SDK核心功能 -->
-        <receiver
-            android:name="cn.jpush.android.service.AlarmReceiver"
-            android:exported="false" />
+        <!-- Required SDK核心功能 通过在线配置自动引入在jpush库中 -->
+<!--        <receiver-->
+<!--            android:name="cn.jpush.android.service.AlarmReceiver"-->
+<!--            android:exported="false" />-->
 
         <!--xiaomi_config_start 通过在线配置自动引入-->
 
