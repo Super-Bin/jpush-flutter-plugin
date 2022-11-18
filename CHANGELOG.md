@@ -1,3 +1,5 @@
+## 2.4.0+2
++ google渠道包有冲突，AndroidManifest去掉无用配置
 ## 2.4.0+1
 + 增加createNotificationChannel，创建通道
 ## 2.4.0
