@@ -1,4 +1,6 @@
 ## 2.4.0+3
++ Android升级JPush: 4.8.5 JCore：4.0.0
+## 2.4.0+3
 + ios升级JPush: 4.9.0 JCore：4.1.0
 + Android适配13
 ## 2.4.0+2
