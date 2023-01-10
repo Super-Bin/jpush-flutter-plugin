@@ -1,5 +1,6 @@
 ## 2.4.0+3
 + ios升级JPush: 4.9.0 JCore：4.1.0
++ Android适配13
 ## 2.4.0+2
 + google渠道包有冲突，AndroidManifest去掉无用配置
 ## 2.4.0+1

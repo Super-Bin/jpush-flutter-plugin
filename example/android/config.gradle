@@ -1,8 +1,8 @@
 // 工程基本配置
 ext {
     isGoogle = false
-    jpushVersion = '4.8.1'
-    jcoreVersion = '3.3.2'
+    jpushVersion = '4.8.5'
+    jcoreVersion = '4.0.0'
 
     // 控制开关，本来应该用命令行配置 -PuseGoogle="true"，不知道怎么加入，就在这里配置了一下，让build.gradle能找到这个变量
     // 注释掉这个配置，project.hasProperty("useGoogle") 就为false，打开的话不管值是什么表达式都为true

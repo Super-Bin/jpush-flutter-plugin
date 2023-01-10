@@ -23,7 +23,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 //    targetSdkVersion 30
     defaultConfig {
         minSdkVersion 21
@@ -49,8 +49,8 @@ android {
 def getExtOrDefault(name, version) {
     return rootProject.ext.has(name) ? rootProject.ext.get(name) : version
 }
-def jpushVersion = getExtOrDefault('jpushVersion', "4.8.4")
-def jcoreVersion = getExtOrDefault('jcoreVersion', "3.3.6")
+def jpushVersion = getExtOrDefault('jpushVersion', "4.8.5")
+def jcoreVersion = getExtOrDefault('jcoreVersion', "4.0.0")
 
 dependencies {
     // 要分开配置，打包local .aar文件加载编译问题，复制一份aar到主build.gradle中 https://blog.csdn.net/tianhongfan10106/article/details/125766704

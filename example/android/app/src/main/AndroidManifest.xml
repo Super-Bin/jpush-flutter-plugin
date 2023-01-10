@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- android13通知栏权限 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- android13存储权限 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /><!-- android13存储权限 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /><!-- android13存储权限 -->
 
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:node="remove"
         tools:ignore="QueryAllPackagesPermission" />
@@ -32,7 +36,8 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true">
             <!-- This keeps the window background of the activity showing
                  until Flutter renders its first frame. It can be removed if
                  there is no splash screen (such as the default splash screen
