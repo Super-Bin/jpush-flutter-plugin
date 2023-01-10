@@ -92,9 +92,9 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.release
-            ndk {
-                abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
-            }
+//            ndk {
+//                abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+//            }
         }
 
         release {
